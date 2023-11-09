@@ -1,0 +1,176 @@
+<html>
+
+<body>
+    <div class="login">
+        <h1>Hit/Flop Classifier</h1>
+
+        <form action="{{ url_for('predict_datapoint')}}" method="post">
+            <h1>
+                <legend>Hit/Flop Prediction</legend>
+            </h1>
+            <div class="mb-3">
+                <label class="form-label">Danceability Score [0-1]</label>
+                <input class="form-control" type="number" name="danceability" placeholder="Enter Danceability score"
+                    min='0' max='1' step="'any" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Energy Score [0 to 1]</label>
+                <input class="form-control" type="number" name="energy" placeholder="Enter Energy score" min='0'
+                    max='1' />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Loudness Score [-60 to 0 db]</label>
+                <input class="form-control" type="number" name="loudness" placeholder="Enter Loudness score" min='-60'
+                    max='0' />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Speechiness Score [0-1]</label>
+                <input class="form-control" type="number" name="speechiness" placeholder="Enter Speechiness score"
+                    min='0' max='1' />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Acousticness Score [0-1]</label>
+                <input class="form-control" type="number" name="acousticness" placeholder="Enter Acousticness score"
+                    min='0' max='1' />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Instrumentalness Score [0-1]</label>
+                <input class="form-control" type="number" name="instrumentalness"
+                    placeholder="Enter Instrumentalness score" min='0' max='1' />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Liveness Score [0-1]</label>
+                <input class="form-control" type="number" name="liveness" placeholder="Enter Liveness score" min='0'
+                    max='1' />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Valence Score [0-1]</label>
+                <input class="form-control" type="number" name="valence" placeholder="Enter Valence score" min='0'
+                    max='1' />
+            </div>
+
+
+            <div class="mb-3">
+                <label class="form-label">Tempo Score </label>
+                <input class="form-control" type="number" name="tempo" placeholder="Enter Tempo" min='0' />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Duration [ms]</label>
+                <input class="form-control" type="number" name="duration_ms" placeholder="Enter Duration in ms"
+                    min='0' />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Chorus Hit</label>
+                <input class="form-control" type="number" name="chorus_hit" placeholder="Enter Chorus Hit" min='0' />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Sections</label>
+                <input class="form-control" type="sections" name="sections" placeholder="Enter Sections" min='2'
+                    max='88' />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Time Signature</label>
+                <select class="form-control" name="time_signature" placeholder="Time Signature" required>
+                    <option class="placeholder" selected disabled value="">Select Time Signature</option>
+                    <option value="0">
+                        0
+                    </option>
+                    <option value="1">
+                        1
+                    </option>
+                    <option value="3">
+                        3
+                    </option>
+                    <option value="4">
+                        4
+                    </option>
+                    <option value="5">
+                        5
+                    </option>
+
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Mode</label>
+                <select class="form-control" name="mode" placeholder="Mode" required>
+                    <option class="placeholder" selected disabled value="">Select Mode</option>
+                    <option value="0">
+                        Minor
+                    </option>
+                    <option value="1">
+                        Major
+                    </option>
+                </select>
+            </div>
+
+
+
+
+            <div class="mb-3">
+                <label class="form-label">Key</label>
+                <select class="form-control" name="key" placeholder="Key" required>
+                    <option class="placeholder" selected disabled value="">Select Key</option>
+                    <option value="0">
+                        0
+                    </option>
+                    <option value="1">
+                        1
+                    </option>
+                    <option value="2">
+                        2
+                    </option>
+                    <option value="3">
+                        3
+                    </option>
+                    <option value="4">
+                        4
+                    </option>
+                    <option value="5">
+                        5
+                    </option>
+                    <option value="6">
+                        6
+                    </option>
+                    <option value="7">
+                        7
+                    </option>
+                    <option value="8">
+                        8
+                    </option>
+                    <option value="9">
+                        9
+                    </option>
+                    <option value="10">
+                        10
+                    </option>
+                    <option value="11">
+                        11
+                    </option>
+
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <input class="btn btn-primary" type="submit" value="Predict" required />
+            </div>
+
+        </form>
+        <h2>
+            THE prediction is {{results}}
+        </h2>
+
+        <body>
+
+</html>
