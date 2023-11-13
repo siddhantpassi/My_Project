@@ -1,4 +1,4 @@
-# End to end Spotify Project
+# Spotify Hit/Flop Prediction Project
 
 ### Introduction:
 
