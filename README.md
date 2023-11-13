@@ -26,17 +26,43 @@ Data Source: [https://www.kaggle.com/datasets/theoverman/the-spotify-hit-predict
 -   time_signature: An estimated overall time signature of a track. The time signature (meter) is a notational convention to specify how many beats are in each bar (or measure).
 -   chorus_hit: This the the author's best estimate of when the chorus would start for the track. Its the timestamp of the start of the third section of the track. This feature was extracted from the data received by the API call for Audio Analysis of that particular track.
 -   sections: The number of sections the particular track has. This feature was extracted from the data received by the API call for Audio Analysis of that particular track.
--   target: The target variable for the track. It can be either '0' or '1'. '1' implies that this song has featured in the weekly list (Issued by Billboards) of Hot-100 tracks in that decade at least once and is therefore a 'hit'. '0' Implies that the track is a 'flop'.
+-   target: The target variable for the track. It can be either '0' or '1'. '1' implies that this song has featured in the weekly list (Issued by Billboards) of Hot-100 tracks in that decade at least once and is, therefore, a 'hit'. '0' Implies that the track is a 'flop'.
 
-### *2.2 Hit Criteria*
+### *Hit Criteria*
 
-The author's condition of a track being 'flop' is as follows:
+The author's condition of a track being a 'Flop' is as follows:
 
   - The track must not appear in the 'hit' list of that decade.
   - The track's artist must not appear in the 'hit' list of that decade.
-  - The track must belong to a genre that could be considered non-mainstream and / or avant-garde. 
+  - The track must belong to a genre that could be considered non-mainstream and/or avant-garde. 
   - The track's genre must not have a song in the 'hit' list.
   - The track must have 'US' as one of its markets.
+
+# Approach for the project 
+
+1. Data Ingestion : 
+    * The data is first read as a CSV file. 
+    * Then the data is split into training and testing and saved as a CSV file.
+
+2. Data Transformation : 
+    * In this phase a ColumnTransformer Pipeline is created.
+    * Numeric variables first go through a SimpleImputer (with strategy=median) followed by Standard Scaling.
+    * Similarly for Categorical Variables, SimpleImputer is applied (with strategy=most frequent), followed by one-hot encoding  and standard scaling.
+    * This preprocessor is saved as a pickle file.
+
+3. Model Training : 
+    * In the Model Training notebook, we found CatBoostClassifier to be the best model.
+    * The hyperparameters are tuned during the model training phase only.
+    * During this phase the model is trained on the transformed data.
+    * This model is saved as a pickle file.
+
+4. Prediction Pipeline : 
+    * This pipeline converts given data into a dataframe and has various functions to load pickle files and predict the final results.
+
+5. Flask App creation : 
+    * Flask app is created with User Interface to predict the target inside a Web Application.
+    * **User Interface IN PROGRESS**
+
 
 # Exploratory Data Analysis Notebook
 
